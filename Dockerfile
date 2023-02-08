@@ -1,7 +1,5 @@
-FROM x:latest
-RUN apt-get update
-RUN apt-get install git -y        
-RUN git clone https://github.com/spring-projects/spring-petclinic.git
-WORKDIR /spring-petclinic
+FROM openjdk:18.0-jdk
+COPY App /java-app
+WORKDIR /java-app
 RUN ./mvnw package
-CMD ["java", "-jar", "target/*.jar"]
+CMD ["java", "-jar", "target/spring-petclinic-3.0.0-SNAPSHOT.jar"]
